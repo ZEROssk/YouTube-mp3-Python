@@ -1,10 +1,10 @@
-from pytube import YouTube
+import youtube_dl
 
 url = input('> Prease enter URL : ')
-yurl = YouTube(url)
+options = {
+  'format': 'bestaudio[ext=mp3]/bestaudio[ext=mp3]/bestaudio'
+}
 
-for list in yurl.streams.all():
-    print(ist)
+with youtube_dl.YoutubeDL(options) as ydl:
+    ydl.download([url])
 
-tag = 140
-yurl.streams.get_by_itag(tag).download('/Users/zero/Music/iTunes/iTunes Media/Music')
