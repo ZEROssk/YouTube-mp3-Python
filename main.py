@@ -1,6 +1,6 @@
 import youtube_dl
 
-url = input('> Prease enter URL : ')
+url = input('>Prease enter URL : ')
 options = {
   'format': 'bestaudio[ext=mp3]/bestaudio[ext=mp3]i/bestaudio'
 }
