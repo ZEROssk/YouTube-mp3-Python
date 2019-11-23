@@ -18,13 +18,13 @@ def responseJSON(url):
             }
     return response
 
-@app.route('/api/mp3', methods=['POST'])
+@app.route('/md/api/mp3', methods=['POST'])
 def postJsonMp3():
     json = request.get_json()
     URL = json['url']
     return jsonify(responseJSON(URL))
 
-@app.route('/api/mp4', methods=['POST'])
+@app.route('/md/api/mp4', methods=['POST'])
 def postJsonMp4():
     json = request.get_json()
     URL = json['url']
