@@ -1,0 +1,18 @@
+version: '3'
+services:
+    python3:
+        build: .
+        container_name: 'y_dl_api'
+        working_dir: '/server/'
+        ports:
+            - "3600:3600"
+        volumes:
+            - ./:/server/
+        networks:
+            - nginx_reverse_proxy
+        restart: always
+
+networks:
+    nginx_reverse_proxy:
+        external: true
+
