@@ -26,7 +26,8 @@ def responseJSON(url):
 @app.route('/md/api/mp3', methods=['POST'])
 def postJsonMp3():
     options = {
-            'format': 'bestaudio[ext=mp3]/bestaudio[ext=m4a]/bestaudio'
+            'format': 'bestaudio[ext=mp3]/bestaudio[ext=m4a]/bestaudio',
+            'outtmpl': './Music/%(title)s-%(id)s.%(ext)s'
             }
 
     json = request.get_json()
@@ -38,7 +39,8 @@ def postJsonMp3():
 @app.route('/md/api/mp4', methods=['POST'])
 def postJsonMp4():
     options = {
-            'format': 'bestaudio[ext=mp3]/bestaudio[ext=mp3]/bestaudio'
+            'format': '299',
+            'outtmpl': './Music/%(title)s-%(id)s.%(ext)s'
             }
 
     json = request.get_json()
