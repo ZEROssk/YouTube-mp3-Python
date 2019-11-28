@@ -39,7 +39,7 @@ def postJsonMp3():
 @app.route('/md/api/mp4', methods=['POST'])
 def postJsonMp4():
     options = {
-            'format': '299',
+            'format': 'bestvideo[ext=mp4]/bestvideo',
             'outtmpl': './Music/%(title)s-%(id)s.%(ext)s'
             }
 
