@@ -52,5 +52,3 @@ def postJsonMp4():
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0', port=3600)
 
-#youtube-dl -saf mp4 list.text
-
