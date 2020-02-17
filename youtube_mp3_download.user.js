@@ -4,7 +4,7 @@
 // @version      0.1
 // @description  MP3 Download to server from YouTube
 // @author       ZEROssk
-// @match        https://www.youtube.com/watch?v=RoKLtsR6K4k
+// @match        https://www.youtube.com/watch*
 // @grant        none
 // @license      MIT License
 // @updateURL    
