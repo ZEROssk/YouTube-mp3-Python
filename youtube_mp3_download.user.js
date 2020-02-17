@@ -7,7 +7,7 @@
 // @match        https://www.youtube.com/watch*
 // @grant        none
 // @license      MIT License
-// @updateURL    
+// @updateURL    https://github.com/ZEROssk/mp3-download-to-server-from-youtube/raw/master/youtube_mp3_download.user.js
 // ==/UserScript==
 
 (function () {
