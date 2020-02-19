@@ -11,5 +11,17 @@
 // ==/UserScript==
 
 (function () {
-    'use strict';
+	'use strict';
+
+	window.onload = function() {
+		let btCreate = document.getElementsByClassName("style-scope ytd-video-secondary-info-renderer")[6]
+		let button =
+			'<button id="api-button">Button</button>'
+		;
+		btCreate.insertAdjacentHTML('afterbegin', button);
+
+		console.log("done");
+	}
+
 })();
+
