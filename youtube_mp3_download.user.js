@@ -14,11 +14,11 @@
 	'use strict';
 
 	window.onload = function() {
-		let btCreate = document.getElementsByClassName("style-scope ytd-video-secondary-info-renderer")[6]
+		let btCreate = document.getElementsByTagName("ytd-subscribe-button-renderer")[0]
 		let button =
 			'<button id="api-button">Button</button>'
 		;
-		btCreate.insertAdjacentHTML('afterbegin', button);
+		btCreate.insertAdjacentHTML('beforebegin', button);
 
 		console.log("done");
 	}
