@@ -1,4 +1,4 @@
-FROM python:3
+FROM python:3.7
 
 RUN apt-get update && \
 	pip install --upgrade pip && \
@@ -9,5 +9,5 @@ RUN apt-get update && \
 
 ENV TZ JST-9
 
-CMD ["python","server.py"]
+CMD ["python3","server.py"]
 
