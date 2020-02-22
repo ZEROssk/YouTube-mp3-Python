@@ -2,7 +2,7 @@ version: '3'
 services:
     python3:
         build: .
-        container_name: 'dev_mp3_api'
+        container_name: 'md_api'
         working_dir: '/server'
         ports:
             - "$PORT"
