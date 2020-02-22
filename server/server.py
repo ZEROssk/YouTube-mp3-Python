@@ -1,6 +1,5 @@
 # coding:utf-8
 from flask import Flask, jsonify, make_response, request, Response
-import json
 import youtube_dl
 
 app = Flask(__name__)
@@ -24,27 +23,27 @@ def responseJSON(url):
     return response
 
 @app.route('/md/api/mp3', methods=['POST'])
-def postJsonMp3():
+def downloadMp3():
     options = {
             'format': 'bestaudio[ext=mp3]/bestaudio[ext=m4a]/bestaudio',
             'outtmpl': './Music/%(title)s-%(id)s.%(ext)s'
             }
 
-    json = request.get_json()
-    URL = json['url']
+    ID = request.args.get("id")
+    URL = "https://www.youtube.com/watch?v="+ID
 
     downloadMedia(URL, options)
     return jsonify(responseJSON(URL))
 
 @app.route('/md/api/mp4', methods=['POST'])
-def postJsonMp4():
+def downloadMp4():
     options = {
             'format': 'bestvideo[ext=mp4]/bestvideo',
             'outtmpl': './Music/%(title)s-%(id)s.%(ext)s'
             }
 
-    json = request.get_json()
-    URL = json['url']
+    ID = request.args.get("id")
+    URL = "https://www.youtube.com/watch?v="+ID
 
     downloadMedia(URL, options)
     return jsonify(responseJSON(URL))
