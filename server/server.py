@@ -11,9 +11,9 @@ def downloadMedia(url, op):
 def responseJSON(url):
     status = 0
     if url != "":
-        status = 1
+        status = "Error"
     else:
-        status = 0
+        status = "OK"
     response = {
             "data": {
                 "status": status,
