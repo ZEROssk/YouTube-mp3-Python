@@ -3,11 +3,11 @@ services:
     python3:
         build: .
         container_name: 'dev_mp3_api'
-        working_dir: '/server/'
+        working_dir: '/server'
         ports:
             - "$PORT"
         volumes:
-            - ./:/server/
+            - ./server:/server
         networks:
             - nginx_reverse_proxy
         restart: always
