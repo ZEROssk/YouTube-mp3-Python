@@ -22,6 +22,7 @@ def responseJSON(url):
 			}
 	return response
 
+# https://address/md/api/mp3&id=hoge
 @app.route('/md/api/mp3', methods=['POST'])
 def downloadMp3():
 	options = {
@@ -35,6 +36,7 @@ def downloadMp3():
 	downloadMedia(URL, options)
 	return jsonify(responseJSON(URL))
 
+# https://address/md/api/mp4&id=hoge
 @app.route('/md/api/mp4', methods=['POST'])
 def downloadMp4():
 	options = {
