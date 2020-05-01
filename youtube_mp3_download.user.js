@@ -10,7 +10,7 @@
 // @updateURL    https://github.com/ZEROssk/mp3-download-to-server-from-youtube/raw/master/youtube_mp3_download.user.js
 // ==/UserScript==
 
-var myAppInterface = {
+var buttonCSS = {
     init: function () {
         this.insertGlobalCSS()
     },
@@ -31,7 +31,7 @@ var myAppInterface = {
     insertGlobalCSS: function () {
         var css = function () {
             /*start
-            #mp3dl .mp3_button{background-color: #cc0000;border: #cc0000;border-radius: 2px;color: #FFF;padding: 2px 2px;display: inline-block;cursor:pointer}
+            #mp3dl{text-align:center; font-weight: bold; cursor: pointer}
             end*/
         }.toString().replace("/*start", '').replace("end*/", '').slice(14, -1);
         this.addGlobalStyle(document, css);
@@ -39,16 +39,11 @@ var myAppInterface = {
 }
 
 var createButton = function () {
-    var obj = document.getElementsByClassName('ytp-right-controls')[0];//document.querySelector('#primary-inner>#menu');
-    if (obj != null) {
-        var btnRow = document.getElementById('mp3dl');
-        if (btnRow == null) {
-            myAppInterface.init()
-            let bu = '<div id="mp3dl" class="style-scope youtube-watch"><div class="style-scope mp3_button"></div></div>';
+    buttonCSS.init()
+    let insertPosition = document.getElementsByClassName('ytp-right-controls')[0];
+    let bu = `<button id="mp3dl" class="ytp-button ytp-settings-button" onclick="console.log('click')">MP3</button>`;
 
-            obj.insertAdjacentHTML('afterbegin', bu);
-        }
-    }
+    insertPosition.insertAdjacentHTML('afterbegin', bu);
 };
 
 setInterval(createButton(), 250);
