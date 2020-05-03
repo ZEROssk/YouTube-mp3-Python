@@ -8,21 +8,20 @@ def downloadMedia(url, op):
 	with youtube_dl.YoutubeDL(op) as ydl:
 		ydl.download([url])
 
-def responseJSON(url):
-	status = 0
-	if url != "":
+def responseJSON(status, uID):
+	if status == 200:
 		status = "OK"
 	else:
 		status = "Error"
 	response = {
 			"data": {
 				"status": status,
-				"url": url
+				"url": uID
 				}
 			}
 	return response
 
-# https://address/md/api/mp3&id=hoge
+# https://address/md/api/mp3?id=hoge
 @app.route('/md/api/mp3', methods=['POST'])
 def downloadMp3():
 	options = {
@@ -31,12 +30,14 @@ def downloadMp3():
 			}
 
 	ID = request.args.get("id")
-	URL = "https://www.youtube.com/watch?v="+ID
+	if ID == None:
+		return jsonify(responseJSON(0, "None"))
+	else:
+		URL = "https://www.youtube.com/watch?v="+str(ID)
+		downloadMedia(URL, options)
+		return jsonify(responseJSON(200, URL))
 
-	downloadMedia(URL, options)
-	return jsonify(responseJSON(URL))
-
-# https://address/md/api/mp4&id=hoge
+# https://address/md/api/mp4?id=hoge
 @app.route('/md/api/mp4', methods=['POST'])
 def downloadMp4():
 	options = {
@@ -45,10 +46,12 @@ def downloadMp4():
 			}
 
 	ID = request.args.get("id")
-	URL = "https://www.youtube.com/watch?v="+ID
-
-	downloadMedia(URL, options)
-	return jsonify(responseJSON(URL))
+	if ID == None:
+		return jsonify(responseJSON(0, "None"))
+	else:
+		URL = "https://www.youtube.com/watch?v="+str(ID)
+		downloadMedia(URL, options)
+		return jsonify(responseJSON(200, URL))
 
 if __name__ == "__main__":
 	app.run(debug=True, host='0.0.0.0', port=5288)
