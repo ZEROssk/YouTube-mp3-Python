@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YouTube MP3 Downloader
 // @namespace    http://zerono.teamfruit.net
-// @version      0.1
+// @version      0.2
 // @description  MP3 Download to server from YouTube
 // @author       ZEROssk
 // @include      https://www.youtube.com*
