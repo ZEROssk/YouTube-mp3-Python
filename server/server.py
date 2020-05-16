@@ -21,7 +21,7 @@ def responseJSON(status, uID):
 			}
 	return response
 
-# https://address/md/api/mp3?id=hoge
+# https://address/md/api/mp3?v=hoge
 @app.route('/md/api/mp3', methods=['POST'])
 def downloadMp3():
 	options = {
@@ -29,7 +29,7 @@ def downloadMp3():
 			'outtmpl': './Music/%(title)s-%(id)s.%(ext)s'
 			}
 
-	ID = request.args.get("id")
+	ID = request.args.get("v")
 	if ID == None:
 		return jsonify(responseJSON(0, "None"))
 	else:
@@ -45,7 +45,7 @@ def downloadMp4():
 			'outtmpl': './Music/%(title)s-%(id)s.%(ext)s'
 			}
 
-	ID = request.args.get("id")
+	ID = request.args.get("v")
 	if ID == None:
 		return jsonify(responseJSON(0, "None"))
 	else:
