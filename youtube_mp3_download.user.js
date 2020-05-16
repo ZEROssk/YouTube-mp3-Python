@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YouTube MP3 Downloader
 // @namespace    http://zerono.teamfruit.net
-// @version      0.2
+// @version      0.3
 // @description  MP3 Download to server from YouTube
 // @author       ZEROssk
 // @include      https://www.youtube.com*
@@ -11,31 +11,31 @@
 // ==/UserScript==
 
 var buttonCSS = {
-    init: function () {
-        this.insertGlobalCSS()
-    },
-    addGlobalStyle: function (doc, css) {
-        if (document.querySelector('.mp3dl-css')) return;
-        var head = doc.getElementsByTagName('head')[0];
-        if (!head) { return; }
-        var style = doc.createElement('style');
-        style.id = 'mp3dl-css';
-        style.type = 'text/css';
-        if (style.styleSheet) {
-            style.styleSheet.cssText = css;
-        } else {
-            style.appendChild(document.createTextNode(css));
-        }
-        head.appendChild(style);
-    },
-    insertGlobalCSS: function () {
-        var css = function () {
-            /*start
-            #mp3dl{text-align:center; font-weight: bold; cursor: pointer}
-            end*/
-        }.toString().replace("/*start", '').replace("end*/", '').slice(14, -1);
-        this.addGlobalStyle(document, css);
-    },
+	init: function () {
+		this.insertGlobalCSS()
+	},
+	addGlobalStyle: function (doc, css) {
+		if (document.querySelector('.mp3dl-css')) return;
+		var head = doc.getElementsByTagName('head')[0];
+		if (!head) { return; }
+		var style = doc.createElement('style');
+		style.id = 'mp3dl-css';
+		style.type = 'text/css';
+		if (style.styleSheet) {
+			style.styleSheet.cssText = css;
+		} else {
+			style.appendChild(document.createTextNode(css));
+		}
+		head.appendChild(style);
+	},
+	insertGlobalCSS: function () {
+		var css = function () {
+			/*start
+			#mp3dl{text-align: center; font-weight: bold; cursor: pointer}s
+			end*/
+		}.toString().replace("/*start", '').replace("end*/", '').slice(14, -1);
+		this.addGlobalStyle(document, css);
+	},
 }
 
 var postData = function (url = ``) {
@@ -47,7 +47,7 @@ var postData = function (url = ``) {
 		redirect: "follow",
 		referrer: "no-referrer",
 	})
-	.then(response => response.json());
+		.then(response => response.json());
 }
 
 var clickMP3DL = function () {
@@ -57,15 +57,16 @@ var clickMP3DL = function () {
 }
 
 var createButton = function () {
-    buttonCSS.init()
-    let insertPosition = document.getElementsByClassName('ytp-right-controls')[0];
-    let dlbt = `<button id="mp3dl" class="ytp-button ytp-settings-button">MP3</button>`;
+	buttonCSS.init()
+	let insertPosition = document.getElementsByClassName('ytp-right-controls')[0];
+	let dlbt = `<button id="mp3dl" class="ytp-button">MP3</button>`;
 
-    insertPosition.insertAdjacentHTML('afterbegin', dlbt);
+	insertPosition.insertAdjacentHTML('afterbegin', dlbt);
 
-    let btEvent = document.getElementById("mp3dl");
-    btEvent.addEventListener("click", clickMP3DL, false);
+	let btEvent = document.getElementById("mp3dl");
+	btEvent.addEventListener("click", clickMP3DL, false);
 
 };
 
 setInterval(createButton(), 250);
+
