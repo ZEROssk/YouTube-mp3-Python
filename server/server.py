@@ -1,8 +1,10 @@
 # coding:utf-8
 from flask import Flask, jsonify, make_response, request, Response
+from flask_cors import CORS
 import youtube_dl
 
 app = Flask(__name__)
+CORS(app)
 
 def downloadMedia(url, op):
 	with youtube_dl.YoutubeDL(op) as ydl:
