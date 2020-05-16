@@ -1,4 +1,4 @@
-version: '3'
+version: '3.5'
 services:
     python3:
         build: .
@@ -9,9 +9,12 @@ services:
         volumes:
             - ./server:/server
         networks:
-            - nginx_reverse_proxy
+            - proxy
         restart: always
 
 networks:
-    nginx_reverse_proxy:
-        external: true
+    proxy:
+        name: nginx_reverse_proxy
+        #networks:
+        #    nginx_reverse_proxy:
+        #        external: true
