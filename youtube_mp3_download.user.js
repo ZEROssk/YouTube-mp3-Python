@@ -38,12 +38,34 @@ var buttonCSS = {
     },
 }
 
+var postData = function (url = ``) {
+	return fetch(url, {
+		method: "POST",
+		mode: "cors",
+		cache: "no-cache",
+		credentials: "same-origin",
+		redirect: "follow",
+		referrer: "no-referrer",
+	})
+	.then(response => response.json());
+}
+
+var clickMP3DL = function () {
+	postData(`https://dev.zerono.cloud/md/api/mp3${location.search}`)
+		.then(data => console.log(JSON.stringify(data)))
+		.catch(error => console.error(error));
+}
+
 var createButton = function () {
     buttonCSS.init()
     let insertPosition = document.getElementsByClassName('ytp-right-controls')[0];
-    let bu = `<button id="mp3dl" class="ytp-button ytp-settings-button" onclick="console.log('click')">MP3</button>`;
+    let dlbt = `<button id="mp3dl" class="ytp-button ytp-settings-button">MP3</button>`;
 
-    insertPosition.insertAdjacentHTML('afterbegin', bu);
+    insertPosition.insertAdjacentHTML('afterbegin', dlbt);
+
+    let btEvent = document.getElementById("mp3dl");
+    btEvent.addEventListener("click", clickMP3DL, false);
+
 };
 
 setInterval(createButton(), 250);
